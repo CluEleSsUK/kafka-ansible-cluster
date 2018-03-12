@@ -1,0 +1,9 @@
+---
+
+- name: Copy kafka config
+  copy: src=server.properties dest={{kafkaDir}}/config/server.properties
+
+- name: Create logging dir
+  file:
+    path: "{{ loggingDir }}"
+    state: directory

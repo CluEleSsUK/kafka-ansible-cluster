@@ -1,0 +1,9 @@
+---
+# tasks file for kafka
+
+- import_tasks: install.yml
+- import_tasks: configure.yml
+- import_tasks: service.yml
+# start kafka
+# test it
+# create all the topics

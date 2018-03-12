@@ -1,0 +1,13 @@
+---
+
+- name: Create a working directory for zookeeper
+  file: 
+    path: "{{ data_dir }}"
+    state: directory
+    owner: zookeeper
+    recurse: yes
+
+- name: Copy zookeeper config
+  copy:
+    src: zoo.cfg
+    dest: "{{ zookeeper_dir }}/conf/zoo.cfg"

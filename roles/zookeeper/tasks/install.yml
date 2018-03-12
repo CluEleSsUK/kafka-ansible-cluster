@@ -1,0 +1,6 @@
+---
+
+- name: Install zookeeper
+  apt:
+    name: zookeeperd
+    state: latest

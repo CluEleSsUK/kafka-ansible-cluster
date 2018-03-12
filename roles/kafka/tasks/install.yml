@@ -1,0 +1,35 @@
+---
+
+- name: Install java
+  apt: 
+    name: default-jre
+    state: latest
+
+- name: Create kafka directory
+  file: 
+    path: "{{ kafkaDir }}"
+    state: directory
+    recurse: yes
+
+- name: Check for kafka download
+  stat:
+    path: /tmp/kafka.tgz
+  register: kafka_dl
+
+- debug: msg="dl exists -> {{ kafka_dl.stat.exists }}"
+
+
+- name: Download kafka binary
+  command: curl https://www.apache.org/dist/kafka/1.0.1/kafka_2.11-1.0.1.tgz -o /tmp/kafka.tgz
+  register: download_result
+  when: kafka_dl.stat.exists == False
+
+- debug: msg= "download result -> {{ download_result }}"
+
+- name: Chmod the kafka binary
+  file:
+    path: /tmp/kafka.tgz
+    mode: 0777
+
+- name: Extract kafka binary into kafka folder
+  shell: tar -xvzf /tmp/kafka.tgz -C {{ kafkaDir }} --strip 1

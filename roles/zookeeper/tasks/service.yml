@@ -1,0 +1,9 @@
+---
+- name: Initialise zookeeper
+  service: name=zookeeper state=started
+
+- name: Test zookeeper has started
+  shell: echo "ruok" | netcat localhost {{ zookeeper_port }}
+  register: netcat_result
+- assert:
+    that: "'imok' in netcat_result.stdout_lines"

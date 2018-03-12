@@ -1,0 +1,6 @@
+---
+# defaults file for kafkao
+
+kafkaDir: /etc/kafka
+workingDir: /var/lib/kafka
+loggingDir: /var/log/kafka

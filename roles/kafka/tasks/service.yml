@@ -1,0 +1,5 @@
+---
+
+- name: Start kafka
+  shell: "nohup {{ kafkaDir }}/bin/kafka-server-start.sh {{ kafkaDir }}/config/server.properties > {{ loggingDir }}/kafka.log 2>&1 &"
+  tags: start
