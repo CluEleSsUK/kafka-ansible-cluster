@@ -1,7 +1,10 @@
 ---
 
 - name: Copy kafka config
-  copy: src=server.properties dest={{kafkaDir}}/config/server.properties
+  template: 
+    src: server.properties.j2 
+    dest: "{{ kafkaDir }}/config/server.properties"
+  notify: restart kafka
 
 - name: Create logging dir
   file:

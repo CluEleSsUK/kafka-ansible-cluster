@@ -1,2 +1,6 @@
 ---
 # handlers file for kafka
+
+- name: Restart kafka
+  include_tasks: service.yml
+  listen: restart kafka

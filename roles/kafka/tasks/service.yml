@@ -1,5 +1,11 @@
 ---
 
+# The ordering of these is important, as they get executed in this order
+
+- name: Stop kafka
+  shell: "{{ kafkaDir }}/bin/kafka-server-stop.sh"
+  ignore_errors: yes
+
 - name: Start kafka
   shell: "nohup {{ kafkaDir }}/bin/kafka-server-start.sh {{ kafkaDir }}/config/server.properties > {{ loggingDir }}/kafka.log 2>&1 &"
   tags: start

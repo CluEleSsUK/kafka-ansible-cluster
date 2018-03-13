@@ -1,5 +1,5 @@
 # Kafka ansible cluster
 
-This repo contains ansible roles for a kafka cluster with zookeeper.  
+This repo contains ansible roles for a kafka cluster with zookeeper on AWS.  
 Any server IPs you wish to provision are put in [site.yml](./site.yml).  
 There are some fairly sane config defaults.  
